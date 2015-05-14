@@ -3,13 +3,18 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>AngularJS Service </title>
+
     <!--plugins-->
-    <script src="../plugin/jquery/jquery.min.js"></script>
+    <script src="../../../plugin/jquery/jquery.min.js"></script>
     <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.js'></script>
     <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
     
     <!--controller-->
     <script src="../controllers/contactCtrl.js"></script>
+
+    <!-- DATA TABLES -->
+    <link href="../../../plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
     <div ng-app="app" ng-controller="ContactController">
@@ -40,12 +45,39 @@
                     <td>{{ contact.phone }}</td>
                     <td>
                         <a href="javascript:void(0)" ng-click="edit(contact.id)">edit</a> | <a href="javascript:void(0)" ng-click="delete(contact.id)">delete</a>
-
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <!-- DATA TABES SCRIPT -->
+    <script src="../../../plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="../../../plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#TruckingDataTable").dataTable({
+                'sSearch': true,
+                "aLengthMenu": [[15, 25, 50, 75, 100, -1], [15, 25, 50, 75, 100, "All"]],
+                "columnDefs": [{ "orderable": false, "targets": 4 }],
+                "iDisplayLength": 15,
+                'aButtons': false,
+                'paging': true,  // Table pagination
+                'ordering': true,  // Column ordering
+                //'info': true,  // Bottom left status text
+                'order': [[1, 'asc']],
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'l><'col-xs-12 col-sm-6'f>r>" +
+                      "t" +
+                      "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+                oLanguage: {
+                    stateSave: 'Test',
+                    sSearch: "<span class='input-group-addon input-sm'><i class='glyphicon glyphicon-search'></i></span>",
+                    sLengthMenu: '_MENU_ '
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
 

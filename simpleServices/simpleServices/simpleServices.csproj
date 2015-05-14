@@ -59,6 +59,14 @@
   <ItemGroup>
     <Content Include="modules\contacts\controllers\contactCtrl.js" />
     <Content Include="modules\contacts\directives\contactService.js" />
+    <Content Include="plugin\datatables\dataTables.bootstrap.css" />
+    <Content Include="plugin\datatables\dataTables.bootstrap.js" />
+    <Content Include="plugin\datatables\images\sort_asc.png" />
+    <Content Include="plugin\datatables\images\sort_asc_disabled.png" />
+    <Content Include="plugin\datatables\images\sort_both.png" />
+    <Content Include="plugin\datatables\images\sort_desc.png" />
+    <Content Include="plugin\datatables\images\sort_desc_disabled.png" />
+    <Content Include="plugin\datatables\jquery.dataTables.js" />
     <Content Include="plugin\jquery\jquery.min.js" />
     <Content Include="modules\contacts\views\contactManager.html" />
     <Content Include="Web.config" />
