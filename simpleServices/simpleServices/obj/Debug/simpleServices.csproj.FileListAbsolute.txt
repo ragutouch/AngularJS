@@ -1,6 +1,0 @@
-D:\RAGU\GitHub\AngularJS\simpleServices\simpleServices\bin\simpleServices.dll.config
-D:\RAGU\GitHub\AngularJS\simpleServices\simpleServices\bin\simpleServices.dll
-D:\RAGU\GitHub\AngularJS\simpleServices\simpleServices\bin\simpleServices.pdb
-D:\RAGU\GitHub\AngularJS\simpleServices\simpleServices\obj\Debug\simpleServices.csprojResolveAssemblyReference.cache
-D:\RAGU\GitHub\AngularJS\simpleServices\simpleServices\obj\Debug\simpleServices.dll
-D:\RAGU\GitHub\AngularJS\simpleServices\simpleServices\obj\Debug\simpleServices.pdb
