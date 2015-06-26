@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Hello world</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+    <script type="text/javascript" src="customFilters.js"></script>
+    <style type="text/css">
+	    h1 > span{
+	    	font-weight: normal !important;
+	    	font-size: 20px;
+	    }
+    </style>
+</head>
+<body>
+<div>
+    <div ng-controller="myCtrl">
+    <h1><u>Filters</u></h1>
+        <h1><span>Custom Filters:</span> {{string | lowercase | capitalize}}</h1>
+    </div>
+</div>
+</body>
+</html>

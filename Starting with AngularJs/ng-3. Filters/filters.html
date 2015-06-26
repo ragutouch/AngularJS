@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Hello world</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+    <script type="text/javascript" src="angularCtrl.js"></script>
+    <style type="text/css">
+	    h1 > span{
+	    	font-weight: normal !important;
+	    	font-size: 20px;
+	    }
+    </style>
+</head>
+<body>
+<div>
+    <div ng-controller="myCtrl">
+    <h1><u>Filters</u></h1>
+        <h1><span>Uppercase From Ctrl:</span> {{string}}</h1>
+        <h1><span>Lowercase:</span> {{string2 | lowercase}}</h1>
+        <h1><span>Number From Ctrl:</span> {{decimalPoint}}</h1>
+        <h1><span>Number:</span> {{decimalPoint2 | number:2}}</h1>
+        <h1><span>Currency:</span> {{5200 | currency}}</h1>
+
+        <h1><span><u>Date</u></span></h1>
+        <h1><span>Custom date:</span> {{ today | date:'EEEE MMM d, y HH:mm:ss.sss a'}}</h1>
+        <h1><span>medium:</span> {{ today | date:'medium' }}</h1> <!-- Aug 09, 2013 12:09:02 PM -->
+		<h1><span>short:</span> {{ today | date:'short' }}</h1> <!-- 8/9/13 12:09 PM -->
+		<h1><span>fullDate:</span> {{ today | date:'fullDate' }}</h1> <!-- Thursday, August 09, 2013 -->
+		<h1><span>longDate:</span> {{ today | date:'longDate' }}</h1> <!-- August 09, 2013 -->
+		<h1><span>mediumDate:</span> {{ today | date:'mediumDate' }}</h1> <!-- Aug 09, 2013 -->
+		<h1><span>shortDate:</span> {{ today | date:'shortDate' }}</h1> <!-- 8/9/13 -->
+		<h1><span>mediumTime:</span> {{ today | date:'mediumTime' }}</h1> <!-- 12:09:02 PM -->
+		<h1><span>shortTime:</span> {{ today | date:'shortTime' }}</h1> <!-- 12:09 PM -->
+
+		<h1><span>Array Char:</span> {{ ['Ari', 'Lerner', 'Likes', 'To', 'Eat', 'Pizza'] | filter:'e' }}</h1>
+		<h1><span>is Capitalized:</span> {{ ['Ari', 'likes', 'to', 'travel'] | filter:isCapitalized }}</h1>
+		<h1><span>Convert as JSON:</span> {{ {'name': 'Ari', 'City': 'San Francisco'} | json }}</h1>
+
+		<h1><span>first 3 char:</span> {{ "San Francisco is very cloudy" | limitTo:3 }}</h1>
+		<h1><span>last 6 char:</span> {{ "San Francisco is very cloudy" | limitTo:-6 }}</h1>
+		<h1><span>first obj:</span> {{ ['a', 'b', 'c', 'd', 'e', 'f'] | limitTo:1 }}</h1>
+
+		<h1><span>OrderBy:</span> {{ [{
+										'name': 'Ari',
+										'status': 'awake'
+										}, {
+										'name': 'Q',
+										'status': 'sleeping'
+										}, {
+										'name': 'Nate',
+										'status': 'awake'
+										}] | orderBy: 'name' }}</h1>
+
+    </div>
+</div>
+</body>
+</html>
