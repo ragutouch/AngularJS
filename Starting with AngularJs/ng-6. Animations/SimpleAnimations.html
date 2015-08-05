@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Hello world</title>
+    <style type="text/css">
+    	button{
+    		margin: 1px;
+    	}
+    	.ng-enter{
+    		transition:0.999s;
+    		opacity: 0;
+    	}
+    	.ng-enter-stagger{
+    		transition-delay:0.03s;
+    	}
+    	.ng-enter-active{
+    		opacity: 1;
+    	}
+
+    	.ng-leave{
+    		transition:0.999s;
+    		opacity: 1;
+    	}
+    	.ng-leave-stagger{
+    		transition-delay:0.03s;
+    	}
+    	.ng-leave-active{
+    		opacity: 0;
+    	}
+    </style>
+</head>
+<body>
+<div style="width:520px;">
+    <div ng-controller="myCtrl">
+        <button ng-click="addItems()">Add Row</button>
+        <button ng-click="clearItems()">Clear All</button>
+        <hr />
+        <button ng-repeat="item in items" ng-click="removeItem($index)">{{item.title}}</button>
+    </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+    <script type="text/javascript" src="angularCtrl.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular-animate.js"></script>
+</body>
+</html>

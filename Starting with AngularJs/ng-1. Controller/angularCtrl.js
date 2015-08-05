@@ -5,4 +5,7 @@
 
 .controller('myCtrl', function($scope){
 	$scope.string="Good work";
+	$scope.funcTest=function(){
+		alert("dsf");
+	}
 });
