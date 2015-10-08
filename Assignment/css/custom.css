@@ -1,0 +1,53 @@
+.padding-5{padding:5px}.padding-10{padding:10px}.padding-13{padding:13px}.padding-15{padding:15px}.padding-left-5{padding-left:5px;}.padding-right-5{padding-right:5px;}.padding-top-5{padding-top:5px;}.padding-bottom-5{padding-bottom:5px;}.padding-left-10{padding-left:10px;}.padding-right-10{padding-right:10px;}.padding-top-10{padding-top:10px;}.padding-bottom-10{padding-bottom:10px;}.padding-left-15{padding-left:15px;}.padding-right-15{padding-right:15px;}.padding-top-15{padding-top:15px;}.padding-bottom-15{padding-bottom:15px;}.padding-left-20{padding-left:20px;}.padding-right-20{padding-right:20px;}.padding-top-20{padding-top:20px;}.padding-bottom-20{padding-bottom:20px;}
+.margin-5{margin:5px}.margin-10{margin:10px}.margin-13{margin:13px}.margin-15{margin:15px}.margin-left-5{margin-left:5px;}.margin-right-5{margin-right:5px;}.margin-top-5{margin-top:5px;}.margin-bottom-5{margin-bottom:5px;}.margin-left-10{margin-left:10px;}.margin-right-10{margin-right:10px;}.margin-top-10{margin-top:10px;}.margin-bottom-10{margin-bottom:10px;}.margin-left-15{margin-left:15px;}.margin-right-15{margin-right:15px;}.margin-top-15{margin-top:15px;}.margin-bottom-15{margin-bottom:15px;}.margin-left-20{margin-left:20px;}.margin-right-20{margin-right:20px;}.margin-top-20{margin-top:20px;}.margin-bottom-20{margin-bottom:20px;}.margin-left-25{margin-left:25px;}.margin-right-25{margin-right:25px;}.margin-top-25{margin-top:25px;}.margin-bottom-25{margin-bottom:25px;}
+.no-padding{ padding:0 !important}.no-padding-top{ padding-top:0 !important}.no-padding-bottom{ padding-bottom:0 !important}.no-padding-left{ padding-left:0 !important}.no-padding-right{ padding-right:0 !important}.no-margin{ margin:0 !important}.no-margin-top{ margin-top:0 !important}.no-margin-bottom{ margin-bottom:0 !important}.no-margin-left{ margin-left:0 !important}.no-margin-right{ margin-right:0 !important}
+.no-border{border:0 !important}.no-border-top{ border-top:0 !important}.no-border-bottom{ border-bottom:0 !important}
+
+
+body{
+	background-color: #f7f7f7;
+}
+.bg-transparant{
+	background-color: rgba(0, 0, 0, 0.07);
+	position: fixed;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+		z-index: 0;
+		display: none;
+}
+.dialog-box{
+	position: fixed;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+		display: none;
+}
+	.dialog-box>div{
+		display: table;
+		margin: 100px auto;
+		z-index: 9999;
+	}
+
+tr.selected td{
+	background-color: #F5FFFF;
+}
+.hideBorder{
+	position: absolute;
+    width: 1px;
+    margin-right: 10px;
+    height: 13px;
+    background-color: #F5FFFF;
+}
+.hideBorder i{
+	        margin-left: -7px;
+    color: #CCCCCC;
+    position: absolute;
+}
+.shadow {
+  -moz-box-shadow:    3px 3px 0px 0px #ccc;
+  -webkit-box-shadow: 3px 3px 0px 0px #ccc;
+  box-shadow:         3px 3px 0px 0px #ccc;
+}
+
+
