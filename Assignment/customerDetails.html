@@ -3,7 +3,7 @@
 <head>
     <title>Customer Details</title>
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/custom.css">
@@ -15,23 +15,23 @@
         <div class="panel panel-default well-light" style="margin:50px auto 0; float:none; width:80%">
           <div class="panel-heading" style="display:table; width:100%">
           <h4 class="no-margin-bottom margin-top-5 pull-left">Customer Details </h4>
+                <div class="input-group col-md-3 pull-right margin-left-10">
+                  <input type="text" ng-model="searchByText" class="form-control input-sm" placeholder="Search by name" style="z-index:0">
+                  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+                </div>
               <div class="input-group pull-right">
                   <input type="button" name="addNewBtn" value="Add New" ng-click="addNew()" class="btn btn-primary btn-sm" />
               </div>
-                <!-- <div class="input-group col-md-3 pull-right">
-                  <input type="text" required name="name" ng-model="newcontact.name" class="form-control" placeholder="Search" aria-describedby="basic-addon1" style="z-index:0">
-                  <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
-                </div> -->
           </div>
           <div class="panel-body">
           <table style="width:100%">
               <tr>
-                  <td>
+                  <td valign="top">
                       
             <table id="customerTable" class="table table-striped table-bordered table-hover no-margin-bottom" style="border-right: 0;">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th ng-click="orderByChange()" style="cursor:pointer"><i id="orderIcon" class="fa "></i> Name</th>
                         <!-- <th class="hidden-sm hidden-xs">Email</th>
                         <th class="hidden-sm hidden-xs">location</th> -->
                         <th class="hidden-sm hidden-xs">Phone</th>
@@ -39,35 +39,42 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="contact in contacts" ng-click="showDetailBox(contact)" id="{{contact.id}}">
-                        <td>{{ contact.name }}</td>
+                    <tr ng-repeat="contact in contacts | orderBy:orderByObject | filter:searchByText" ng-click="showDetailBox(contact)" id="{{contact.id}}">
+                        <td style="text-transform:capitalize">{{ contact.name }}</td>
                         <!-- <td class="hidden-sm hidden-xs">{{ contact.email }}</td>
                         <td class="hidden-sm hidden-xs">{{ contact.location }}</td> -->
                         <td class="hidden-sm hidden-xs">{{ contact.phone }}</td>
                         <td class="text-center" style="border-right: 0;">
                             <div class="pull-right" style="margin-right: -8px;margin-top: 3px;"></div>
                              <a class="btn btn-success btn-xs" href="javascript:void(0)" ng-click="edit(contact.id)"><i class="fa fa-edit"></i></a>  
-                             <a class="btn btn-danger btn-xs" href="javascript:void(0)" ng-click="delete(contact.id)"><i class="fa fa-trash"></i></a>
+                             <a class="btn btn-danger btn-xs" href="javascript:void(0)" ng-click="delete(contact)"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr ng-show="contacts.length==0">
+                        <td colspan="3">No records found</td>
+                    </tr>
+                </tfoot>
             </table>
                   </td>
-                  <td valign="top" class="shadow" style="width:50%;border:solid 1px #ccc;background-color:#F5FFFF">
-                      <div ng-show="selectedCustomer.length>0">
+                  <td valign="top" class="shadow" style="width:50%;border:solid 1px #ccc;background-color:#F5FFFF;padding:20px">
+                      <div ng-show="selectedCustomer.length!=0" >
                           <h3>{{selectedCustomer.name}}'s Details</h3>
                           <dl class="dl-horizontal">
                               <dt>Customer Id :</dt>
-                              <dd>{{selectedCustomer.id}}</dd>
+                              <dd><i class="fa fa-key"></i> {{selectedCustomer.id}}</dd>
                               <dt>Customer Name :</dt>
-                              <dd>{{selectedCustomer.name}}</dd>
+                              <dd style="text-transform:capitalize"><i class="fa fa-user"></i> {{selectedCustomer.name}}</dd>
                               <dt>Phone Number :</dt>
-                              <dd>{{selectedCustomer.phone}}</dd>
+                              <dd><i class="fa fa-phone"></i> {{selectedCustomer.phone}}</dd>
                               <dt>Email Address :</dt>
-                              <dd>{{selectedCustomer.email}}</dd>
+                              <dd><i class="fa fa-envelope"></i> {{selectedCustomer.email}}</dd>
+                              <dt>Location :</dt>
+                              <dd style="text-transform:capitalize"><i class="fa fa-map-marker"></i> {{selectedCustomer.location}}</dd>
                           </dl>
                       </div>
-                      <div ng-show="selectedCustomer.length!>0"><h3>No row has been selected</h3></div>
+                      <div ng-show="selectedCustomer.length==0"><h3>No row has been selected</h3></div>
                   </td>
               </tr>
           </table>
@@ -112,16 +119,16 @@
     </div>
 </div>
     <!-- jQuery 2.1.3-->
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+    <script src="js/jquery-1.11.1.min.js"></script> 
     <!-- JQUERY VALIDATE -->
     <script src="js/jquery.validate.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     <!-- DATA TABES SCRIPT 
     <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+    <script src="js/angular.js"></script>
     <script type="text/javascript" src="js/angularCtrl.js"></script>
     
 </body>

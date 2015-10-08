@@ -3,7 +3,6 @@
 module.service('ContactService', function () {
     //to create unique contact id
     var uid = 100253;
-
     
     //contacts array to hold list of all contacts
     var contacts = [
@@ -77,13 +76,15 @@ module.service('ContactService', function () {
 });
 
 module.controller('ContactController', function ($scope, ContactService, $timeout) {
-
+    $scope.selectedCustomer={};
+    $scope.searchByText='';
     $scope.contacts = ContactService.list();
+    $scope.orderByObject='-name';
 
     $scope.detailBox =function(id){
         function setHover(selectedId){
             if ($scope.previousId!=undefined) {
-                $("#" +$scope.previousId + " td:last-child div").html();
+                $("#" +$scope.previousId + " td:last-child div").html("");
                 $("#" +$scope.previousId).removeClass("selected");
             };
 
@@ -92,7 +93,8 @@ module.controller('ContactController', function ($scope, ContactService, $timeou
             $scope.previousId=selectedId;
         }
         if (id==0) {
-            setHover($("#customerTable tr:first-child")[1].id);
+            setHover($("#customerTable tbody tr:first-child")[0].id);
+            $scope.selectedCustomer=$scope.contacts[0];
         }
         else{
             setHover(id);
@@ -112,20 +114,34 @@ module.controller('ContactController', function ($scope, ContactService, $timeou
         if (!$scope.validater($scope.newcontact)) {
             return false;
         };
+        var editedId=$scope.newcontact.id;
         ContactService.save($scope.newcontact);
         $scope.newcontact = {};
        $scope.close();
+
+       $timeout(function () {
+            if (editedId==null) {
+                $("#customerTable tbody tr:last-child")[0].click();
+           }
+           else{
+            $scope.detailBox(editedId);
+           };
+        },100);
+       
     }
 
-    $scope.delete = function (id) {
+    $scope.delete = function (obj) {
+        confirm("Are you sure you want to delete " + obj.name +"'s record")
+        ContactService.delete(obj.id);
+        if (obj.id==selectedCustomer.id) {
+            $scope.detailBox(0);
+        };
+        if ($scope.newcontact.id == obj.id) $scope.newcontact = {};
 
-        ContactService.delete(id);
-        if ($scope.newcontact.id == id) $scope.newcontact = {};
     }
 
     $scope.edit = function (id) {
         $scope.addNew();
-        debugger;
         var result = angular.copy(ContactService.get(id));
         result.phone = Number(result.phone)
         $scope.newcontact = result;
@@ -141,7 +157,26 @@ module.controller('ContactController', function ($scope, ContactService, $timeou
         $(".dialog-box").css("display","none");
     }
 
-   $timeout(function () {
-        $scope.detailBox(0);
-    },100);
+    $scope.showDetailBox=function(obj){
+        $scope.selectedCustomer=obj;
+        $scope.detailBox(obj.id);
+    }
+    $scope.orderByChange=function(){
+        if ($scope.orderByObject!='name') {
+            $scope.orderByObject='name';
+            $("#orderIcon").removeClass("fa-caret-down");
+            $("#orderIcon").addClass("fa-caret-up");
+        }
+        else{
+            $scope.orderByObject='-name';
+            $("#orderIcon").removeClass("fa-caret-up");
+            $("#orderIcon").addClass("fa-caret-down");
+        };
+
+       $timeout(function () {
+            $("#customerTable tbody tr:first-child")[0].click();
+        });
+    }
+    $scope.orderByChange();
+
 })
